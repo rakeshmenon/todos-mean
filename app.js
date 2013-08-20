@@ -40,6 +40,9 @@ app.use(express.session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -82,7 +85,9 @@ passport.use(new FacebookStrategy({
 
 //AUTH ROUTES
 app.get('/', ensureLoggedIn('/login'), function(req, res) {
-  res.send('Hello World');
+  res.render('index', {
+    title: "Todos-Mean"
+  });
 });
 
 app.get('/account', function(req, res) {
@@ -100,7 +105,7 @@ app.get('/logout', function(req, res) {
 
 app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-  successRedirect: '/account',
+  successRedirect: '/',
   failureRedirect: '/login'
 }));
 
