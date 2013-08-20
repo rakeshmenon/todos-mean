@@ -1,0 +1,16 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.3.5",
+    "ejs": "*",
+    "passport": "~0.1.17",
+    "passport-facebook": "~1.0.0",
+    "connect-ensure-login": "~0.1.1",
+    "mongoose": "~3.6.17"
+  }
+}
