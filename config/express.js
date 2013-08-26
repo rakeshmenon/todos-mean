@@ -1,5 +1,5 @@
 module.exports = function (app, express, passport) {
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static('public'));
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({

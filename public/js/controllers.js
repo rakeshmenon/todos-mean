@@ -4,9 +4,9 @@
 
 angular.module('Todo.controllers', []).
     controller('AppCtrl', function ($scope, $http) {
-        $scope.name = "Sumeet";
         $scope.todos = [];
         $scope.message = "";
+        $scope.labelTypes = ['.label-default', '.label-primary', '.label-success', '.label-info', '.label-warning', 'label-danger'];
         getTodoList();
         /**
          * Automatically fetching data from the server on load
@@ -45,6 +45,7 @@ angular.module('Todo.controllers', []).
             }).
             success(function (data, status, headers, config) {
                 // $scope.name = data.name;
+                // $scope.todos.push($scope.todoItem);
                 $scope.todoItem = "";
                 getTodoList();
             }).
