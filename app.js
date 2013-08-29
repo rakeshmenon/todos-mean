@@ -1,4 +1,5 @@
 var express = require('express');
+var mode = "dev";
 
 //passport vars
 var passport = require('passport'),
@@ -16,14 +17,18 @@ var mongoose = require('mongoose'),
     ObjectId = mongoose.Types.ObjectId;
 
 
+app.configure("production", function () {
+  mode = "production";
+});
+
 //App configurations
-var Models = require("./config/models");
+var Models = require("./config/models")(mode || "dev");
 
-require("./config/passport")(passport, loginStrategies, Models);
+require("./config/passport")(passport, loginStrategies, Models, mode || "dev");
 
-require("./config/express")(app, express, passport);
+require("./config/express")(app, express, passport, mode || "dev");
 
-require("./config/routes")(app, passport, ensureLoggedIn, Models);
+require("./config/routes")(app, passport, ensureLoggedIn, Models, mode || "dev");
 
 
 var port = process.env.PORT || 5000;
