@@ -2,25 +2,33 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var Models = {};
 
-// User Schema
-var UserSchema = new Schema({
-  provider: String,
-  uid: String,
-  name: String,
-  image: String,
-  created: {type: Date, default: Date.now}
-});
+module.exports = function (mode) {
+  // User Schema
+  var UserSchema = new Schema({
+    provider: String,
+    uid: String,
+    name: String,
+    image: String,
+    created: {type: Date, default: Date.now}
+  });
 
-var TodoSchema = new Schema({
-  uid: String,
-  item: String,
-  completed: Boolean,
-  created: {type: Date, default: Date.now}
-});
+  var TodoSchema = new Schema({
+    uid: String,
+    item: String,
+    completed: Boolean,
+    created: {type: Date, default: Date.now}
+  });
 
-mongoose.connect('mongodb://localhost/todos-mean');
-mongoose.model('User', UserSchema);
-mongoose.model('Todo', TodoSchema);
+  if (mode === "production") {
+    mongoose.connect('mongodb://rakesh:rakesh@ds041208.mongolab.com:41208/todos-mean');
+  } else { 
+    mongoose.connect('mongodb://localhost/todos-mean');
+  }
+  mongoose.model('User', UserSchema);
+  mongoose.model('Todo', TodoSchema);
 
-module.exports.User = mongoose.model('User');
-module.exports.Todo = mongoose.model('Todo');
+  return {
+    User: mongoose.model('User'),
+    Todo: mongoose.model('Todo')
+  };
+};
