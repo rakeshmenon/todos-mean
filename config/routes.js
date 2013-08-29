@@ -89,6 +89,7 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
 
       todoItem.item = req.body.item;
       todoItem.uid = req.user.uid;
+      todoItem.completed = false;
 
       todoItem.save(function(err) {
         if(err) {
@@ -100,10 +101,38 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
         } else {
           res.send({
             code: 1,
-            status: "success"
+            status: "success",
+            item: todoItem
           })
         }
       });
+    }
+  });
+
+  app.put("/todos", function (req, res) {
+    if(!req.user) {
+      res.send("User not logged in~!");
+    } else {
+      Models.Todo.findById(
+        req.body.id,
+        function(err, doc) {
+          if (!err){
+            if (req.body.item) doc.item = req.body.item;
+            if(req.body.completed) doc.completed = req.body.completed;
+            doc.save();
+
+            res.send({
+              code: 1,
+              status: "success"
+            });
+          } else {
+            res.send({
+              code: -1,
+              status: "failed"
+            })
+          }
+        }
+      );
     }
   });
 };

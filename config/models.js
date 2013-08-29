@@ -14,6 +14,7 @@ var UserSchema = new Schema({
 var TodoSchema = new Schema({
   uid: String,
   item: String,
+  completed: Boolean,
   created: {type: Date, default: Date.now}
 });
 
