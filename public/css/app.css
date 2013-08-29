@@ -67,6 +67,32 @@ body {
     border-radius: 0;
     margin-bottom: 10px;
 }
+.todo-item {
+  -moz-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+.todo-item.completed-true h3 span{
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+.todo-item .delete span{
+  text-decoration: none !important;
+}
+.todo-item .delete{
+  opacity: 0;
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  position: absolute;
+  right: 0px;
+  top: 2px;
+  border-radius: 0;
+}
+.todo-item:hover .delete{
+  opacity: 1;
+}
 .todo-item .label {
     padding: 7px 10px;
     border-radius: 0;

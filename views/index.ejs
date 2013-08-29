@@ -25,9 +25,9 @@
 	    </form>
 	    <p class="message">{{message}}</p>
 	    <div id="todo-list">
-	    	<div class="todo-item slide-top" id="{{ item._id }}" ng-repeat="item in todos" >
-	    		<h3 class="clearfix"><a type="button" ng-click="deleteTodo(item)" class="check btn btn-info"><span class="glyphicon glyphicon-ok"></span></a>
-	    		<span class="label label-default">{{ item.item }}</span></h3>
+	    	<div class="todo-item slide-in completed-{{ item.completed }}" id="{{ item._id }}" ng-repeat="item in todos" >
+	    		<h3 class="clearfix"><a check-mark ng-click="updateTodo(item)" class="check btn btn-info"><span class="glyphicon glyphicon-ok"></span></a>
+	    		<span random-class class="label" contenteditable="true" >{{ item.item }}</span><a class="delete btn btn-danger" ng-click="deleteTodo(item)"><span class="glyphicon glyphicon-remove"></span></a></h3>
 	    	</div>
 	    </div>
 	    <div ng-view>

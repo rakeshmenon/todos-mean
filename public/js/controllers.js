@@ -6,7 +6,7 @@ angular.module('Todo.controllers', []).
     controller('AppCtrl', function ($scope, $http) {
         $scope.todos = [];
         $scope.message = "";
-        $scope.labelTypes = ['.label-default', '.label-primary', '.label-success', '.label-info', '.label-warning', 'label-danger'];
+        $scope.labelTypes = ['label-default', 'label-primary', 'label-success', 'label-warning', 'label-danger'];
         getTodoList();
         /**
          * Automatically fetching data from the server on load
@@ -19,7 +19,7 @@ angular.module('Todo.controllers', []).
             }).
             success(function (data, status, headers, config) {
               // $scope.name = data.name;
-                // console.log(data);
+                console.log(data);
                 $scope.todos = data;
                 if($scope.todos.length==0){
                     $scope.message = "Your Todo List Is Empty";
@@ -44,10 +44,10 @@ angular.module('Todo.controllers', []).
                 headers: {'Content-Type': 'application/json'}
             }).
             success(function (data, status, headers, config) {
-                // $scope.name = data.name;
-                // $scope.todos.push($scope.todoItem);
+                console.log(data.item);
+                $scope.todos.push(data.item);
                 $scope.todoItem = "";
-                getTodoList();
+                // getTodoList();
             }).
             error(function (data, status, headers, config) {
                 $scope.message = 'Error!'
@@ -70,6 +70,28 @@ angular.module('Todo.controllers', []).
                 // $scope.name = data.name;
                 $scope.message = data.status;
                 getTodoList();
+            }).
+            error(function (data, status, headers, config) {
+                $scope.message = 'Error!'
+            });
+        }
+
+        /**
+         * Method to edit an existing todo list item
+         * @return {[type]} [description]
+         */
+        $scope.updateTodo = function(item){
+            $http({
+                method: 'PUT',
+                url: '/todos',
+                data: {'id' : item._id, 'completed' : item.completed, 'item' : item.item },
+                headers: {'Content-Type': 'application/json'}
+            }).
+            success(function (data, status, headers, config) {
+                console.log(data);
+                // $scope.name = data.name;
+                // $scope.message = data.status;
+                // getTodoList();
             }).
             error(function (data, status, headers, config) {
                 $scope.message = 'Error!'
