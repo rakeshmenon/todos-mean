@@ -91,7 +91,7 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
       todoItem.uid = req.user.uid;
       todoItem.completed = false;
 
-      todoItem.save(function(err) {
+      todoItem.save(function(err, doc) {
         if(err) {
           res.send({
             code: -1,
@@ -102,7 +102,7 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
           res.send({
             code: 1,
             status: "success",
-            item: todoItem
+            item: doc
           })
         }
       });
