@@ -26,6 +26,6 @@ require("./config/express")(app, express, passport);
 require("./config/routes")(app, passport, ensureLoggedIn, Models);
 
 
-
-var server = app.listen(3000);
+var port = process.env.PORT || 5000;
+var server = app.listen(port);
 console.log('TodoList server started on port %s', server.address().port);
