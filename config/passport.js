@@ -16,7 +16,7 @@ module.exports = function (passport, loginStrategies, Models) {
   passport.use(new loginStrategies.FacebookStrategy({
     clientID: FB_CLIENT_ID,
     clientSecret: FB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: "http://todos-mean.herokuapp.com/auth/facebook/callback"
   }, function(token, tokenSecret, profile, done) {
     Models.User.findOne({uid: profile.id}, function(err, user) {
       if(user) {
