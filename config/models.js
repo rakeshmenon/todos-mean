@@ -18,7 +18,7 @@ var TodoSchema = new Schema({
   created: {type: Date, default: Date.now}
 });
 
-mongoose.connect('mongodb://localhost/todos-mean');
+mongoose.connect('mongodb://rakesh:rakesh@ds041208.mongolab.com:41208/todos-mean');
 mongoose.model('User', UserSchema);
 mongoose.model('Todo', TodoSchema);
 
