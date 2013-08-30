@@ -30,5 +30,15 @@ angular.module('Todo.directives', []).
             scope.updateTodo(scope.item);
         });
     }
+}).
+  directive('contenteditable', function (version,$timeout) {
+    return function(scope, elem, attrs) {
+        elem.bind("blur",function(){
+            scope.$apply(function(){
+                scope.item.item = elem.text();
+                scope.updateTodo(scope.item);
+            });
+        });
+    }
 });
 

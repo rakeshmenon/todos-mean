@@ -18,7 +18,6 @@ angular.module('Todo.controllers', []).
             }).
             success(function (data, status, headers, config) {
               // $scope.name = data.name;
-                console.log(data);
                 $scope.todos = data;
                 if($scope.todos.length==0){
                     $scope.message = "Your Todo List Is Empty";
@@ -45,7 +44,7 @@ angular.module('Todo.controllers', []).
                 headers: {'Content-Type': 'application/json'}
             }).
             success(function (data, status, headers, config) {
-                $scope.todos.push(data.item);
+                $scope.todos.unshift(data.item);
                 $scope.todoItem = "";
                 $notification.success("Added!", "Todo Item Added Successfully!"); 
                 // getTodoList();
