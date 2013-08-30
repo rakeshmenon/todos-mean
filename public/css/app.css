@@ -76,6 +76,7 @@ a:hover{
 }
 .nav a:hover{
   color: #000;
+  cursor: pointer;
 }
 /* Custom page footer */
 .footer {
