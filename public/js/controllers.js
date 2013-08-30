@@ -3,9 +3,8 @@
 /* Controllers */
 
 angular.module('Todo.controllers', []).
-    controller('AppCtrl', function ($scope, $http) {
+    controller('AppCtrl', function ($scope, $http, $notification) {
         $scope.todos = [];
-        $scope.message = "";
         $scope.labelTypes = ['label-default', 'label-primary', 'label-success', 'label-warning', 'label-danger'];
         getTodoList();
         /**
@@ -27,6 +26,8 @@ angular.module('Todo.controllers', []).
             }).
             error(function (data, status, headers, config) {
               $scope.name = 'Error!'
+            $notification.error(status, data); 
+
             });
         }
 
@@ -44,9 +45,9 @@ angular.module('Todo.controllers', []).
                 headers: {'Content-Type': 'application/json'}
             }).
             success(function (data, status, headers, config) {
-                console.log(data.item);
                 $scope.todos.push(data.item);
                 $scope.todoItem = "";
+                $notification.success("Added!", "Todo Item Added Successfully!"); 
                 // getTodoList();
             }).
             error(function (data, status, headers, config) {
@@ -59,7 +60,6 @@ angular.module('Todo.controllers', []).
          * @return {[type]} [description]
          */
         $scope.deleteTodo = function(item){
-            console.log(item);
             $http({
                 method: 'DELETE',
                 url: '/todos',
@@ -68,7 +68,7 @@ angular.module('Todo.controllers', []).
             }).
             success(function (data, status, headers, config) {
                 // $scope.name = data.name;
-                $scope.message = data.status;
+                $notification.success("Deleted!", "Item successfully deleted. Hope you completed it first :)"); 
                 getTodoList();
             }).
             error(function (data, status, headers, config) {
@@ -88,7 +88,7 @@ angular.module('Todo.controllers', []).
                 headers: {'Content-Type': 'application/json'}
             }).
             success(function (data, status, headers, config) {
-                console.log(data);
+                $notification.success("Updated!", "Todo item successfully updated!"); 
                 // $scope.name = data.name;
                 // $scope.message = data.status;
                 // getTodoList();
