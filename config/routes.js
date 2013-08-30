@@ -11,7 +11,13 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
   });
 
   app.get('/login', function(req, res) {
-    res.send('<html><body><a href="/auth/facebook">Sign in with Facebook</a></body></html>');
+    if(req.user) {
+      res.redirect("/");
+    } else {
+      res.render('login', {
+        title: "Login | Todos-Mean"
+      });
+    }  
   });
 
   app.get('/logout', function(req, res) {
