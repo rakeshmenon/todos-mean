@@ -123,9 +123,13 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
         req.body.id,
         function(err, doc) {
           if (!err){
+            console.log("Incoming:" + req.body.completed);
             if (req.body.item) doc.item = req.body.item;
-            if(req.body.completed) doc.completed = req.body.completed;
-            doc.save();
+            if (typeof req.body.completed === "boolean") doc.completed = req.body.completed;
+	    
+	    doc.save(function(err, doc) {
+              console.log("Saved:" + doc);
+	    });
 
             res.send({
               code: 1,
