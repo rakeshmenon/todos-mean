@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var Models = {};
 
-module.exports = function (mode) {
+module.exports = function () {
   var DB_URL = 'mongodb://localhost/todos-mean';
 
   // User Schema
