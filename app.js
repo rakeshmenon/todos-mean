@@ -3,9 +3,6 @@ var express = require('express');
 //express app
 var app = express();
 
-//mongoose vars
-var ObjectId = require('mongoose').Types.ObjectId;
-
 /**
  * App configurations
  */
