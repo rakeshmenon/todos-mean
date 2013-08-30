@@ -96,24 +96,6 @@ angular.module('Todo.controllers', []).
             });
         }
     }).
-    controller('NavBarCtrl', function ($scope, $notification, $http, $location) {
-        /**
-         * Logout method to call /logout using GET
-         * 
-         */
-        $scope.logout = function(){
-            $http({
-              method: 'GET',
-              url: '/logout'
-            }).
-            success(function (data, status, headers, config) {
-              window.location.href="/";
-            }).
-            error(function (data, status, headers, config) {
-            });
-        }
-
-    }).
     controller('ProfileCtrl', function ($scope, $http, $notification) {
         $scope.user = "";
         getUserData();

@@ -15,9 +15,6 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: '/partials/profile.html',
       controller: 'ProfileCtrl'
     }).
-    when('/logout', {
-      // do nothing
-    }).
     when('/', {
       templateUrl: '/partials/todo.html',
       controller: 'AppCtrl'
@@ -25,7 +22,7 @@ config(function ($routeProvider, $locationProvider) {
     otherwise({
       redirectTo: '/'
     });
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(false).hashPrefix('!');
   if(window.location.hash == '#_=_'){
     window.location.href = '/';
   }
