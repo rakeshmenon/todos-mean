@@ -6,7 +6,8 @@ angular.module('Todo', [
   'Todo.controllers',
   'Todo.filters',
   'Todo.services',
-  'Todo.directives'
+  'Todo.directives',
+  'notifications'
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.

@@ -82,38 +82,43 @@ body {
 }
 .todo-item .delete{
   opacity: 0;
-  color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  color: rgb(233, 10, 10);
+  background-color: transparent !important;
+  border: none;
   position: absolute;
   right: 0px;
   top: 2px;
   border-radius: 0;
+  padding: 13px;
+  background-image: none;
+  font-size: 20px;
+  box-shadow: none;
+  text-shadow: none;
 }
 .todo-item:hover .delete{
   opacity: 1;
 }
 .todo-item .label {
-    padding: 7px 10px;
-    border-radius: 0;
-    display: block;
-    float: left;
-    width: 94%;
-    white-space: normal;
-    line-height: 24px;
-    font-weight: 100;
-    text-align: left;
+  padding: 14px 10px;
+  border-radius: 0;
+  display: block;
+  float: left;
+  width: 93%;
+  white-space: normal;
+  line-height: 24px;
+  font-weight: 100;
+  text-align: left;
+  font-size: 24px;
 }
 .todo-item .btn.check {
-    border-radius: 0;
-    display: block;
-    float: left;
-    width: 6%;
-    padding-top: 8px;
-    padding-bottom: 8px; 
+  border-radius: 0;
+  display: block;
+  float: left;
+  width: 7%;
+  padding: 15px !important; 
 }
 .todo-item h3 {
-    margin: 0 0 5px;
+    margin: 0;
 }
 /*---- Media Queries ----*/
 /* Customize container */
