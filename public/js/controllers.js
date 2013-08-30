@@ -5,8 +5,8 @@
 angular.module('Todo.controllers', []).
     controller('AppCtrl', function ($scope, $http, $notification) {
         $scope.todos = [];
-        $scope.labelTypes = ['label-default', 'label-primary', 'label-success', 'label-warning', 'label-danger'];
         getTodoList();
+
         /**
          * Automatically fetching data from the server on load
          * @type An array of todo items being sent
@@ -17,14 +17,12 @@ angular.module('Todo.controllers', []).
               url: '/todos'
             }).
             success(function (data, status, headers, config) {
-              // $scope.name = data.name;
                 $scope.todos = data.reverse();
                 if($scope.todos.length==0){
                     $scope.message = "Your Todo List Is Empty";
                 }
             }).
             error(function (data, status, headers, config) {
-                $scope.name = 'Error!'
                 $notification.error(status, data); 
 
             });
@@ -46,7 +44,7 @@ angular.module('Todo.controllers', []).
             success(function (data, status, headers, config) {
                 $scope.todos.unshift(data.item);
                 $scope.todoItem = "";
-                $notification.success("Added!", "Todo Item Added Successfully!"); 
+                // $notification.success("Added!", "Todo Item Added Successfully!"); 
                 // getTodoList();
             }).
             error(function (data, status, headers, config) {
@@ -66,10 +64,9 @@ angular.module('Todo.controllers', []).
                 headers: {'Content-Type': 'application/json'}
             }).
             success(function (data, status, headers, config) {
-                // $scope.name = data.name;
                 var index = $scope.todos.indexOf(item);
                 $scope.todos.splice(index, 1);
-                $notification.success("Deleted!", "Item successfully deleted. Hope you completed it first :)"); 
+                // $notification.success("Deleted!", "Item successfully deleted. Hope you completed it first :)"); 
                 // getTodoList();
             }).
             error(function (data, status, headers, config) {
@@ -89,12 +86,11 @@ angular.module('Todo.controllers', []).
                 headers: {'Content-Type': 'application/json'}
             }).
             success(function (data, status, headers, config) {
-                $notification.success("Updated!", "Todo item successfully updated!"); 
+                // $notification.success("Updated!", "Todo item successfully updated!"); 
                 if(item.completed == true){
                     var index = $scope.todos.indexOf(item);
                     $scope.todos.push($scope.todos.splice(index, 1)[0]);
                 }
-                // $scope.name = data.name;
                 // $scope.message = data.status;
                 // getTodoList();
             }).
@@ -103,11 +99,40 @@ angular.module('Todo.controllers', []).
             });
         }
     }).
-    controller('MyCtrl1', function ($scope) {
-        // write Ctrl here
+    controller('NavBarCtrl', function ($scope, $notification, $http, $location) {
+        /**
+         * Logout method to call /logout using GET
+         * 
+         */
+        $scope.logout = function(){
+            $http({
+              method: 'GET',
+              url: '/logout'
+            }).
+            success(function (data, status, headers, config) {
+            }).
+            error(function (data, status, headers, config) {
+            });
+        }
 
     }).
-    controller('MyCtrl2', function ($scope) {
-        // write Ctrl here
-
+    controller('ProfileCtrl', function ($scope, $http, $notification) {
+        $scope.user = "";
+        getUserData();
+        /**
+         * Fetching user data
+         * @type An object of the user
+         */
+        function getUserData(){
+            $http({
+              method: 'GET',
+              url: '/account'
+            }).
+            success(function (data, status, headers, config) {
+                $scope.user=data;
+            }).
+            error(function (data, status, headers, config) {
+                $notification.error(status, data); 
+            });
+        }
     });

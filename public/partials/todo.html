@@ -1,0 +1,9 @@
+<form id="form-parent" add-todo>
+    <input ng-model="todoItem" class="form-control" type="text"  id="todo-form" name="todoItem" size="30" placeholder="What do you want to do?" />
+</form>
+<div id="todo-list">
+	<div class="todo-item completed-{{ item.completed }}" id="{{ item._id }}" ng-repeat="item in todos" >
+		<h3 class="clearfix"><a check-mark class="check btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
+		<span random-class class="label" contenteditable="true" >{{ item.item }}</span><a class="delete btn btn-danger" delete-animate><span class="glyphicon glyphicon-remove"></span></a></h3>
+	</div>
+</div>

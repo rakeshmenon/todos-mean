@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on filters, and services
 
-angular.module('Todo', [
+var todo = angular.module('Todo', [
   'Todo.controllers',
   'Todo.filters',
   'Todo.services',
@@ -12,15 +12,21 @@ angular.module('Todo', [
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/profile', {
-      templateUrl: 'partials/profile',
-      controller: 'MyCtrl1'
+      templateUrl: '/partials/profile.html',
+      controller: 'ProfileCtrl'
     }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
+    when('/logout', {
+      // do nothing
+    }).
+    when('/', {
+      templateUrl: '/partials/todo.html',
+      controller: 'AppCtrl'
     }).
     otherwise({
       redirectTo: '/'
     });
   $locationProvider.html5Mode(true);
+  if(window.location.hash == '#_=_'){
+    window.location.href = '/';
+  }
 });

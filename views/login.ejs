@@ -1,9 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-  </head>
-  <body>
-    <a href="/auth/facebook">Sign in with Facebook</a>
-  </body>
+<html ng-app="Todo">
+  	<head>
+	    <title><%= title %></title>
+	    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	    <link rel='stylesheet' href='/css/app.css' />
+	    <link rel='stylesheet' href='/css/animate.min.css' />
+	    <link rel='stylesheet' href='/css/notification.min.css' />
+  	</head>
+  	<body>
+	  	<div class="container">
+	  		<div class="jumbotron animated fadeIn">
+		        <h1>Todos MEAN</h1>
+		        <p class="lead">This is a todo list app built using the MEAN (MongoDB, ExpressJS, AngularJS and NodeJS) stack. The ideal frameworks for a hackathon project.</p>
+		        <!-- <p><a class="btn btn-lg btn-success" href="#">Sign up today</a></p> -->
+	    		<a class="fb-auth animated fadeInRight" href="/auth/facebook">Sign in with Facebook</a>
+		    </div>
+	  	</div>
+  	</body>
 </html>

@@ -1,5 +1,8 @@
 /* app css stylesheet */
-
+body.app{
+  background-color: #333;
+  padding: 20px 0 0;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -7,6 +10,14 @@
   padding: 0 0 0.5em;
 }
 
+.fb-auth{
+  background-image: url(../images/connect-with-facebook.png);
+  width: 205px;
+  height: 42px;
+  display: block;
+  text-indent: -9999px;
+  margin: 0 auto;
+}
 .menu:before {
   content: "[";
 }
@@ -47,13 +58,25 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
+a:hover{
+  text-decoration: none;
+}
+.header h3 a{
+  color: #fff;
+}
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
+  color: #fff;
 }
-
+.nav a{
+  color: #51a351;
+}
+.nav a:hover{
+  color: #000;
+}
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -82,6 +105,10 @@ body {
   -webkit-animation-delay: 1s !important;
   -o-animation-iteration-count: infinite !important;
   position: relative;
+  margin-bottom: 2px;
+}
+.todo-item.completed-true h3 a.check{
+  opacity: 0.2;
 }
 .todo-item.completed-true h3 span{
   text-decoration: line-through;
@@ -103,38 +130,163 @@ body {
   background-image: none;
   font-size: 20px;
   box-shadow: none;
-  text-shadow: none;
+  text-shadow: none;  
 }
 .todo-item:hover .delete{
   opacity: 1;
+}
+.container{
+  padding: 0;
 }
 .todo-item .label {
   padding: 14px 10px;
   border-radius: 0;
   display: block;
   float: left;
-  width: 93%;
+  width: 83%;
   white-space: normal;
   line-height: 24px;
   font-weight: 100;
   text-align: left;
   font-size: 24px;
+  background-color: #fff;
+  color: #000;
 }
 .todo-item .btn.check {
   border-radius: 0;
   display: block;
   float: left;
-  width: 7%;
+  width: 17%;
   padding: 15px !important; 
 }
 .todo-item h3 {
     margin: 0;
 }
+.label.ng-binding.color-1{
+  background: #dc0001; /* Old browsers */
+  background: -moz-linear-gradient(top,  #dc0001 0%, #dc0001 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dc0001), color-stop(100%,#dc0001)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #dc0001 0%,#dc0001 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #dc0001 0%,#dc0001 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #dc0001 0%,#dc0001 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #dc0001 0%,#dc0001 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dc0001', endColorstr='#dc0001',GradientType=0 ); /* IE6-9 */
+}
+.label.ng-binding.color-2{
+  background: #df2901; /* Old browsers */
+background: -moz-linear-gradient(top,  #df2901 0%, #df2901 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#df2901), color-stop(100%,#df2901)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #df2901 0%,#df2901 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #df2901 0%,#df2901 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #df2901 0%,#df2901 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #df2901 0%,#df2901 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df2901', endColorstr='#df2901',GradientType=0 ); /* IE6-9 */
+
+}
+.label.ng-binding.color-3{
+  background: #e45800; /* Old browsers */
+background: -moz-linear-gradient(top,  #e45800 0%, #e66d00 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e45800), color-stop(100%,#e66d00)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #e45800 0%,#e66d00 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #e45800 0%,#e66d00 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #e45800 0%,#e66d00 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #e45800 0%,#e66d00 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e45800', endColorstr='#e66d00',GradientType=0 ); /* IE6-9 */
+
+}
+.label.ng-binding.color-4{
+  background: #ea9a00; /* Old browsers */
+background: -moz-linear-gradient(top,  #ea9a00 0%, #ea9a00 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea9a00), color-stop(100%,#ea9a00)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ea9a00 0%,#ea9a00 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ea9a00 0%,#ea9a00 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ea9a00 0%,#ea9a00 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ea9a00 0%,#ea9a00 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea9a00', endColorstr='#ea9a00',GradientType=0 ); /* IE6-9 */
+ 
+}
+.label.ng-binding.color-5{
+  background: #5201df; /* Old browsers */
+background: -moz-linear-gradient(top,  #5201df 0%, #5201df 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5201df), color-stop(100%,#5201df)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #5201df 0%,#5201df 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #5201df 0%,#5201df 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #5201df 0%,#5201df 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #5201df 0%,#5201df 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5201df', endColorstr='#5201df',GradientType=0 ); /* IE6-9 */
+
+}
+.label.ng-binding.color-6{
+  background: #c500ea; /* Old browsers */
+background: -moz-linear-gradient(top,  #c500ea 0%, #c500ea 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c500ea), color-stop(100%,#c500ea)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #c500ea 0%,#c500ea 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #c500ea 0%,#c500ea 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #c500ea 0%,#c500ea 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #c500ea 0%,#c500ea 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c500ea', endColorstr='#c500ea',GradientType=0 ); /* IE6-9 */
+
+}
+.label.ng-binding.color-7{
+background: #30b84e; /* Old browsers */
+background: -moz-linear-gradient(top,  #30b84e 0%, #30b84d 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#30b84e), color-stop(100%,#30b84d)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #30b84e 0%,#30b84d 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #30b84e 0%,#30b84d 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #30b84e 0%,#30b84d 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #30b84e 0%,#30b84d 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30b84e', endColorstr='#30b84d',GradientType=0 ); /* IE6-9 */
+
+}
+.label.ng-binding.color-8{
+  background: #00eb46; /* Old browsers */
+background: -moz-linear-gradient(top,  #00eb46 0%, #00eb46 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00eb46), color-stop(100%,#00eb46)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #00eb46 0%,#00eb46 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #00eb46 0%,#00eb46 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #00eb46 0%,#00eb46 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #00eb46 0%,#00eb46 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00eb46', endColorstr='#00eb46',GradientType=0 ); /* IE6-9 */
+
+}
 /*---- Media Queries ----*/
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
+@media only screen and (min-width: 1200px) {
+}
+@media (min-width: 980px) {
+  .container{
+    width: 500px;
+  }
+  .todo-item .label{
+    width: 89%;
+  }
+  .todo-item .btn.check{
+    width: 11%;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px){
+  .container{
+    width: 500px;
+  }
+  .todo-item .label{
+    width: 89%;
+  }
+  .todo-item .btn.check{
+    width: 11%;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+  .container{
+    width: 100%;
+    padding:0;
+  }
+  .todo-item .label{
+    width: 89%;
+  }
+  .todo-item .btn.check{
+    width: 11%;
+  }
+  form{
+    margin-bottom: 0;
   }
 }
 .container-narrow > hr {

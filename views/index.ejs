@@ -9,29 +9,15 @@
     <link rel='stylesheet' href='/css/animate.min.css' />
     <link rel='stylesheet' href='/css/notification.min.css' />
   </head>
-  <body>
-  	<div class="container" ng-controller="AppCtrl">
+  <body class="app">
+  	<div class="container">
   		<div class="header">
-	        <ul class="nav nav-pills pull-right">
-				<li class="active"><a href="/profile">Profile</a></li>
-				<li><a href="/logout">Logout</a></li>
+	        <ul class="nav nav-pills pull-right" ng-controller="NavBarCtrl">
+	        	<li><a href="/profile">Profile</a></li>
+				<li><a href="/logout" logout>Logout</a></li>
 	        </ul>
-        	<h3 class="text-muted">Todos</h3>
-      	</div>
-      	<div class="jumbotron animated fadeIn">
-	        <h1><%= title %></h1>
-	        <p class="lead">This is a todo list built using MEAN (MongoDB, ExpressJS, AngularJS and NodeJS). The ideal frameworks for a hackathon project.</p>
-	        <!-- <p><a class="btn btn-lg btn-success" href="#">Sign up today</a></p> -->
-	    </div>
-	    <form id="form-parent" ng-submit="addToDo()">
-		    <input ng-model="todoItem" class="form-control" type="text" add-todo id="todo-form" name="todoItem" size="30" placeholder="What do you want to do?" />
-	    </form>
-	    <div id="todo-list">
-	    	<div class="todo-item completed-{{ item.completed }}" id="{{ item._id }}" ng-repeat="item in todos" >
-	    		<h3 class="clearfix"><a check-mark class="check btn btn-inverse"><span class="glyphicon glyphicon-ok"></span></a>
-	    		<span random-class class="label" contenteditable="true" >{{ item.item }}</span><a class="delete btn btn-danger" delete-animate><span class="glyphicon glyphicon-remove"></span></a></h3>
-	    	</div>
-	    </div>
+        	<h3 class="text-muted"><a href="/">Todos</a></h3>
+      	</div>	    
 	    <div ng-view>
 	    	
 	    </div>
