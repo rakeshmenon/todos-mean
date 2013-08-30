@@ -23,7 +23,7 @@ angular.module('Todo.controllers', []).
                 }
             }).
             error(function (data, status, headers, config) {
-                $notification.error(status, data); 
+                $notification.error("Error "+status, "Unable to fetch the todo list"); 
 
             });
         }
@@ -48,7 +48,7 @@ angular.module('Todo.controllers', []).
                 // getTodoList();
             }).
             error(function (data, status, headers, config) {
-                $notification.error(status, data); 
+                $notification.error("Error "+status, "Unable to add a new item. Please try again later."); 
             });
         }
 
@@ -70,7 +70,7 @@ angular.module('Todo.controllers', []).
                 // getTodoList();
             }).
             error(function (data, status, headers, config) {
-                $notification.error(status, data); 
+                $notification.error("Error "+status, "Unable to delete"); 
             });
         }
 
@@ -86,16 +86,13 @@ angular.module('Todo.controllers', []).
                 headers: {'Content-Type': 'application/json'}
             }).
             success(function (data, status, headers, config) {
-                // $notification.success("Updated!", "Todo item successfully updated!"); 
                 if(item.completed == true){
                     var index = $scope.todos.indexOf(item);
                     $scope.todos.push($scope.todos.splice(index, 1)[0]);
                 }
-                // $scope.message = data.status;
-                // getTodoList();
             }).
             error(function (data, status, headers, config) {
-                $notification.error(status, data); 
+                $notification.error("Error "+status, "Unable to update the list"); 
             });
         }
     }).
@@ -132,7 +129,7 @@ angular.module('Todo.controllers', []).
                 $scope.user=data;
             }).
             error(function (data, status, headers, config) {
-                $notification.error(status, data); 
+                $notification.error("Error "+status, "Unable to get data"); 
             });
         }
     });
