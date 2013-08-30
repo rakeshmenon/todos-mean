@@ -1,6 +1,8 @@
 
 module.exports = function (passport, loginStrategies, Models, mode) {
-  var authCallback = "";
+  var authCallback = "",
+      FB_CLIENT_ID = "",
+      FB_CLIENT_SECRET = "";
 
   switch(mode) {
     case "production":

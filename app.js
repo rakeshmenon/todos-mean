@@ -12,8 +12,6 @@ loginStrategies.FacebookStrategy = require('passport-facebook').Strategy;
 //express app
 var app = express();
 
-//mongoose vars
-var ObjectId = require('mongoose').Types.ObjectId;
 
 //switch to production mode if NODE_ENV is set to "production"
 app.configure("production", function () {
