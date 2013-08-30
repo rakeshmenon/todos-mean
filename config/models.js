@@ -3,17 +3,7 @@ var Schema = mongoose.Schema;
 var Models = {};
 
 module.exports = function () {
-  var DB_URL = "";
-
-  switch(mode) {
-    case "production":
-      DB_URL = 'mongodb://rakesh:rakesh@ds041208.mongolab.com:41208/todos-mean';
-      break;
-
-    default:
-      DB_URL = 'mongodb://localhost/todos-mean';
-      break;
-  };
+  var DB_URL = 'mongodb://localhost/todos-mean';
 
   // User Schema
   var UserSchema = new Schema({
