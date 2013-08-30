@@ -3,6 +3,18 @@ var Schema = mongoose.Schema;
 var Models = {};
 
 module.exports = function (mode) {
+  var DB_URL = "";
+
+  switch(mode) {
+    case "production":
+      DB_URL = 'mongodb://rakesh:rakesh@ds041208.mongolab.com:41208/todos-mean';
+      break;
+
+    default:
+      DB_URL = 'mongodb://localhost/todos-mean';
+      break;
+  };
+
   // User Schema
   var UserSchema = new Schema({
     provider: String,
@@ -19,11 +31,7 @@ module.exports = function (mode) {
     created: {type: Date, default: Date.now}
   });
 
-  if (mode === "production") {
-    mongoose.connect('mongodb://rakesh:rakesh@ds041208.mongolab.com:41208/todos-mean');
-  } else { 
-    mongoose.connect('mongodb://localhost/todos-mean');
-  }
+  mongoose.connect(DB_URL);
   mongoose.model('User', UserSchema);
   mongoose.model('Todo', TodoSchema);
 
