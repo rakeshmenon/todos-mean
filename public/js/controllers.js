@@ -107,6 +107,7 @@ angular.module('Todo.controllers', []).
               url: '/logout'
             }).
             success(function (data, status, headers, config) {
+              window.location.href="/";
             }).
             error(function (data, status, headers, config) {
             });

@@ -19,19 +19,6 @@ angular.module('Todo.directives', []).
         });
     }
 }).
-  directive('logout', function (version,$timeout,$notification) {
-    return function(scope, elem, attrs) {
-        elem.bind("click",function(){
-            scope.logout();
-            window.location.href="/";
-        });
-    }
-}).
-//   directive('randomClass', function (version) {
-//     return function(scope, elem, attrs) {
-//         elem.addClass(scope.labelTypes[Math.floor(Math.random() * scope.labelTypes.length)]);
-//     };
-// }).
   directive('checkMark', function (version,$timeout) {
     return function(scope, elem, attrs) {
         elem.bind("click",function(){
