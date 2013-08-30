@@ -1,20 +1,8 @@
 
-module.exports = function (passport, loginStrategies, Models, mode) {
-  var authCallback = "";
-
-  switch(mode) {
-    case "production":
-      authCallback = "http://todos-mean.herokuapp.com/auth/facebook/callback";
-      FB_CLIENT_ID = "533487063373095";
-      FB_CLIENT_SECRET = "5e09b1af3971061522e95bf818d090c4";
-      break;
-
-    default:
-      authCallback = "http://localhost:5000/auth/facebook/callback";
-      FB_CLIENT_ID = "583180818409508";
-      FB_CLIENT_SECRET = "15c596c306477669c4fa3e644a16239d";
-      break;
-  };
+module.exports = function (passport, loginStrategies, Models) {
+  var authCallback = "http://localhost:5000/auth/facebook/callback";
+  var FB_CLIENT_ID = "583180818409508";
+  var FB_CLIENT_SECRET = "15c596c306477669c4fa3e644a16239d";
 
   // In order to support login sessions, Passport will serialize and deserialize
   // user instances to and from the session.
