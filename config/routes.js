@@ -56,7 +56,9 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
           if (!err){
             res.send(docs);
           } else {
-            throw err;
+            res.send({
+            	error: err
+            });
           }
         }
       );
@@ -69,16 +71,18 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
     } else {
       Models.Todo.findByIdAndRemove(
         req.body.id,
-        function(err, docs) {
+        function(err, doc) {
           if (!err){
             res.send({
               code: 1,
-              status: "success"
+              status: "success",
+              item: doc
             });
           } else {
             res.send({
               code: -1,
-              status: "failed"
+              status: "failed",
+              error: err
             })
           }
         }
@@ -123,23 +127,30 @@ module.exports = function (app, passport, ensureLoggedIn, Models) {
         req.body.id,
         function(err, doc) {
           if (!err){
-            console.log("Incoming:" + req.body.completed);
             if (req.body.item) doc.item = req.body.item;
             if (typeof req.body.completed === "boolean") doc.completed = req.body.completed;
 	    
 	    doc.save(function(err, doc) {
-              console.log("Saved:" + doc);
-	    });
-
-            res.send({
-              code: 1,
-              status: "success"
+	      if(!err) {
+                res.send({
+                  code: 1,
+                  status: "success",
+                  item: doc
+                });
+              } else {
+                res.send({
+                  code: -1,
+                  status: "failed",
+                  error: err
+                });
+              }
             });
           } else {
             res.send({
               code: -1,
-              status: "failed"
-            })
+              status: "failed",
+              error: err
+            });
           }
         }
       );
