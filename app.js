@@ -1,5 +1,4 @@
 var express = require('express');
-var mode = "dev";
 
 //passport vars
 var passport = require('passport'),
@@ -12,24 +11,16 @@ loginStrategies.FacebookStrategy = require('passport-facebook').Strategy;
 //express app
 var app = express();
 
-//mongoose vars
-var ObjectId = require('mongoose').Types.ObjectId;
-
-//switch to production mode if NODE_ENV is set to "production"
-app.configure("production", function () {
-  mode = "production";
-});
-
 /**
  * App configurations
  */
-var Models = require("./config/models")(mode || "dev");
+var Models = require("./config/models")();
 
-require("./config/passport")(passport, loginStrategies, Models, mode || "dev");
+require("./config/passport")(passport, loginStrategies, Models);
 
-require("./config/express")(app, express, passport, mode || "dev");
+require("./config/express")(app, express, passport);
 
-require("./config/routes")(app, passport, ensureLoggedIn, Models, mode || "dev");
+require("./config/routes")(app, passport, ensureLoggedIn, Models);
 
 
 var port = process.env.PORT || 5000; //for heroku
