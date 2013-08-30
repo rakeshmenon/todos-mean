@@ -11,8 +11,8 @@ angular.module('Todo', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
-    when('/view1', {
-      templateUrl: 'partials/partial1',
+    when('/profile', {
+      templateUrl: 'partials/profile',
       controller: 'MyCtrl1'
     }).
     when('/view2', {

@@ -68,10 +68,20 @@ body {
     margin-bottom: 10px;
 }
 .todo-item {
-  -moz-transition: all 0.1s ease-in-out;
-  -webkit-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+/*  -moz-transition: all 0.1s ease-in-out !important;
+  -webkit-transition: all 0.1s ease-in-out !important;
+  -o-transition: all 0.1s ease-in-out !important;
+  transition: all 0.1s ease-in-out !important;*/
+  -moz-animation-duration: 1s !important;
+  -webkit-animation-delay: 1s !important;
+  -o-animation-iteration-count: infinite !important;
+  -moz-animation-duration: 1s !important;
+  -webkit-animation-delay: 1s !important;
+  -o-animation-iteration-count: infinite !important;
+  -moz-animation-duration: 1s !important;
+  -webkit-animation-delay: 1s !important;
+  -o-animation-iteration-count: infinite !important;
+  position: relative;
 }
 .todo-item.completed-true h3 span{
   text-decoration: line-through;

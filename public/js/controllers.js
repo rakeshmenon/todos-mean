@@ -18,14 +18,14 @@ angular.module('Todo.controllers', []).
             }).
             success(function (data, status, headers, config) {
               // $scope.name = data.name;
-                $scope.todos = data;
+                $scope.todos = data.reverse();
                 if($scope.todos.length==0){
                     $scope.message = "Your Todo List Is Empty";
                 }
             }).
             error(function (data, status, headers, config) {
-              $scope.name = 'Error!'
-            $notification.error(status, data); 
+                $scope.name = 'Error!'
+                $notification.error(status, data); 
 
             });
         }
@@ -50,7 +50,7 @@ angular.module('Todo.controllers', []).
                 // getTodoList();
             }).
             error(function (data, status, headers, config) {
-                $scope.message = 'Error!'
+                $notification.error(status, data); 
             });
         }
 
@@ -67,11 +67,13 @@ angular.module('Todo.controllers', []).
             }).
             success(function (data, status, headers, config) {
                 // $scope.name = data.name;
+                var index = $scope.todos.indexOf(item);
+                $scope.todos.splice(index, 1);
                 $notification.success("Deleted!", "Item successfully deleted. Hope you completed it first :)"); 
-                getTodoList();
+                // getTodoList();
             }).
             error(function (data, status, headers, config) {
-                $scope.message = 'Error!'
+                $notification.error(status, data); 
             });
         }
 
@@ -88,12 +90,16 @@ angular.module('Todo.controllers', []).
             }).
             success(function (data, status, headers, config) {
                 $notification.success("Updated!", "Todo item successfully updated!"); 
+                if(item.completed == true){
+                    var index = $scope.todos.indexOf(item);
+                    $scope.todos.push($scope.todos.splice(index, 1)[0]);
+                }
                 // $scope.name = data.name;
                 // $scope.message = data.status;
                 // getTodoList();
             }).
             error(function (data, status, headers, config) {
-                $scope.message = 'Error!'
+                $notification.error(status, data); 
             });
         }
     }).

@@ -31,13 +31,30 @@ angular.module('Todo.directives', []).
         });
     }
 }).
-  directive('contenteditable', function (version,$timeout) {
+  directive('contenteditable', function (version,$timeout,$notification) {
     return function(scope, elem, attrs) {
         elem.bind("blur",function(){
             scope.$apply(function(){
-                scope.item.item = elem.text();
-                scope.updateTodo(scope.item);
+                var elemText = elem.text();
+                if(scope.item.item != elemText && elemText.trim() != ""){
+                    scope.item.item = elemText;
+                    elem.addClass('pulse animated');
+                    scope.updateTodo(scope.item);
+                }else if(elemText.trim() == ""){
+                    $notification.warning("O oh!", "You cannot have a blank todo item!");
+                    elem.text(scope.item.item);
+                }
             });
+        });
+    }
+}).
+  directive('deleteAnimate', function (version,$timeout,$notification) {
+    return function(scope, elem, attrs) {
+        elem.bind("click",function(){
+            elem.parent().addClass('animated flipOutX');
+            $timeout(function(){
+                scope.deleteTodo(scope.item);
+            },500);
         });
     }
 });
